@@ -88,7 +88,7 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
       // "gestão de projetos" style trigram
       if (toks[i + 1] && ["de", "em", "do", "da"].includes(toks[i + 1].toLowerCase()) && toks[i + 2]) {
         const n3 = norm(toks[i + 2]);
-        if (n3.length >= 4 && !STOP.has(n3)) add(`${n} ${toks[i + 1].toLowerCase()} ${n3}`, `${t} ${toks[i + 1]} ${toks[i + 2]}`.toLowerCase(), `${t} ${toks[i + 1]} ${toks[i + 2]}`, 0.8);
+        if (n3.length >= 4 && !STOP.has(n3)) add(`${n} ${toks[i + 1]!.toLowerCase()} ${n3}`, `${t} ${toks[i + 1]} ${toks[i + 2]}`.toLowerCase(), `${t} ${toks[i + 1]} ${toks[i + 2]}`, 0.8);
       }
     }
   }
@@ -168,7 +168,7 @@ function optimize(cv: string, found: Term[]) {
   }
   const out: string[] = [];
   const h = header.filter((l, i, a) => !(l === "" && (i === 0 || i === a.length - 1)));
-  if (h.length) { out.push(h[0].replace(/^• /, "").toUpperCase(), ...h.slice(1).filter(Boolean)); }
+  if (h.length) { out.push(h[0]!.replace(/^• /, "").toUpperCase(), ...h.slice(1).filter(Boolean)); }
   for (const s of ORDER) {
     const lines = sections.get(s);
     if (!lines || !lines.some(Boolean)) continue;
