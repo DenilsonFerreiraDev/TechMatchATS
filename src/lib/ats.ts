@@ -1,12 +1,12 @@
 // Dynamic, local (no external AI) ATS analysis.
 
 const STOP = new Set(
-  ("a o as os um uma uns umas de do da dos das em no na nos nas por pelo pela pelos pelas para pra com sem sob sobre entre e ou mas que se como mais menos muito muita muitos muitas ser estar ter haver seu sua seus suas nosso nossa nossos nossas este esta estes estas esse essa isso isto aquele aquela ao aos à às já também onde quando qual quais quem sua você vocês nós eles elas ele ela será serão é são foi será sendo tem têm possuir possui buscamos procuramos vaga vagas empresa empresas oportunidade oportunidades candidato candidata candidatos requisitos requisito desejável desejáveis diferencial diferenciais obrigatório obrigatórios responsabilidades atividades atribuições benefícios local trabalho time equipe área cargo função perfil profissional profissionais experiência experiências conhecimento conhecimentos conhecer anos ano mínimo nível bom boa ótimo ótima forte sólida sólido avançado avançada intermediário básico etc atuar atuação realizar desenvolver garantir apoiar participar contribuir dia dias horário remoto híbrido presencial salário vale plano saúde todos todas cada outros outras novo nova novos novas grande grandes melhor melhores através mediante dentro fora bem the and or of to in for with on at by from as is are be will you we our your an this that have has years experience knowledge strong skills ability work working team role job".split(
+  "a o as os um uma uns umas de do da dos das em no na nos nas por pelo pela pelos pelas para pra com sem sob sobre entre e ou mas que se como mais menos muito muita muitos muitas ser estar ter haver seu sua seus suas nosso nossa nossos nossas este esta estes estas esse essa isso isto aquele aquela ao aos à às já também onde quando qual quais quem sua você vocês nós eles elas ele ela será serão é são foi será sendo tem têm possuir possui buscamos procuramos vaga vagas empresa empresas oportunidade oportunidades candidato candidata candidatos requisitos requisito desejável desejáveis diferencial diferenciais obrigatório obrigatórios responsabilidades atividades atribuições benefícios local trabalho time equipe área cargo função perfil profissional profissionais experiência experiências conhecimento conhecimentos conhecer anos ano mínimo nível bom boa ótimo ótima forte sólida sólido avançado avançada intermediário básico etc atuar atuação realizar desenvolver garantir apoiar participar contribuir dia dias horário remoto híbrido presencial salário vale plano saúde todos todas cada outros outras novo nova novos novas grande grandes melhor melhores através mediante dentro fora bem the and or of to in for with on at by from as is are be will you we our your an this that have has years experience knowledge strong skills ability work working team role job pleno junior júnior senior sênior certificação certificações certificado desejavel requisitos: microsoft".split(
     " ",
   ),
 );
 
-const SOFT_ROOTS = ["comunica", "lideran", "equipe", "proativ", "organiza", "resolu", "negocia", "criativ", "adapta", "pensamento", "autonom", "colabora", "empat", "relacionamento", "flexib", "iniciativa", "responsab", "comprometi", "resiliên", "resilien", "analític", "analitic", "didát", "escuta", "inteligência emocional", "foco", "gestão de tempo", "persuas", "ética", "curiosi", "communication", "leadership", "teamwork"];
+const SOFT_ROOTS = ["comunica", "lideran", "equipe", "proativ", "organiza", "resolu", "negocia", "criativ", "adapta", "pensamento", "autonom", "colabora", "empat", "relacionamento", "flexib", "iniciativa", "responsab", "comprometi", "resiliên", "resilien", "analític", "analitic", "didát", "escuta", "inteligência emocional", "foco", "gestão de tempo", "trabalho em equipe", "visão sistêmica", "atendimento ao cliente", "persuas", "ética", "curiosi", "communication", "leadership", "teamwork"];
 const TECH_SEED = ["javascript", "typescript", "react", "angular", "vue", "node", "python", "java", "c#", ".net", "golang", "php", "ruby", "kotlin", "swift", "sql", "nosql", "postgresql", "mysql", "oracle", "mongodb", "redis", "aws", "azure", "gcp", "docker", "kubernetes", "terraform", "linux", "graphql", "html", "css", "spark", "kafka", "hadoop", "api", "apis", "rest", "cloud", "erp", "crm", "sap", "totvs", "protheus", "salesforce", "android", "ios", "flutter", "django", "spring", "laravel", "pandas", "tensorflow", "llm", "ia", "ai", "machine learning", "microsserviços", "microservices", "devops", "ci/cd", "bi", "etl", "autocad", "solidworks", "revit"];
 const TOOL_SEED = ["excel", "word", "powerpoint", "office", "power bi", "tableau", "jira", "confluence", "trello", "notion", "figma", "git", "github", "gitlab", "jenkins", "postman", "slack", "teams", "hubspot", "zendesk", "servicenow", "photoshop", "illustrator", "canva", "looker", "metabase", "grafana", "datadog", "sharepoint", "google analytics", "vs code", "bitbucket", "asana", "monday"];
 const CERT_HINT = /certif|pmp|itil|cobit|cissp|comptia|ccna|ccnp|lpi|togaf|six sigma|green belt|black belt|scrum master|\bcsm\b|\bpsm\b|\bpspo\b|az-\d{3}|aws certified|\bcpa\b|\bcfa\b|\bcrc\b|\boab\b|\bcrea\b|\bcrm\b|nr-?\d+|iso \d+/i;
@@ -70,7 +70,7 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
   for (const line of job.split(/\r?\n/)) {
     const toks = tokens(line);
     for (let i = 0; i < toks.length; i++) {
-      const t = toks[i], n = norm(t);
+      const t = toks[i]!, n = norm(t);
       if (n.length < 2 || STOP.has(t.toLowerCase()) || STOP.has(n) || /^\d+$/.test(n)) continue;
       const isAcronym = /^[A-Z0-9#+.]{2,8}$/.test(t);
       const isProper = /^[A-Z][a-z]/.test(t) && i > 0;
@@ -82,13 +82,13 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
       if (nx) {
         const nn = norm(nx);
         if (nn.length >= 3 && !STOP.has(nn) && !STOP.has(nx.toLowerCase())) add(n + " " + nn, `${t} ${nx}`.toLowerCase(), `${t} ${nx}`, 0.6);
-      } else if (toks[i + 2] && ["de", "em"].includes(toks[i + 1]?.toLowerCase())) {
+      } else if (toks[i + 2] && ["de", "em"].includes((toks[i + 1] ?? "").toLowerCase())) {
         /* noop */
       }
       // "gestão de projetos" style trigram
-      if (toks[i + 1] && ["de", "em", "do", "da"].includes(toks[i + 1].toLowerCase()) && toks[i + 2]) {
-        const n3 = norm(toks[i + 2]);
-        if (n3.length >= 4 && !STOP.has(n3)) add(`${n} ${toks[i + 1].toLowerCase()} ${n3}`, `${t} ${toks[i + 1]} ${toks[i + 2]}`.toLowerCase(), `${t} ${toks[i + 1]} ${toks[i + 2]}`, 0.8);
+      if (toks[i + 1] && ["de", "em", "do", "da"].includes(toks[i + 1]!.toLowerCase()) && toks[i + 2]) {
+        const n3 = norm(toks[i + 2]!);
+        if (n3.length >= 4 && !STOP.has(n3)) add(`${n} ${toks[i + 1]!.toLowerCase()} ${n3}`, `${t} ${toks[i + 1]} ${toks[i + 2]}`.toLowerCase(), `${t} ${toks[i + 1]} ${toks[i + 2]}`, 0.8);
       }
     }
   }
@@ -168,7 +168,7 @@ function optimize(cv: string, found: Term[]) {
   }
   const out: string[] = [];
   const h = header.filter((l, i, a) => !(l === "" && (i === 0 || i === a.length - 1)));
-  if (h.length) { out.push(h[0].replace(/^• /, "").toUpperCase(), ...h.slice(1).filter(Boolean)); }
+  if (h.length) { out.push(h[0]!.replace(/^• /, "").toUpperCase(), ...h.slice(1).filter(Boolean)); }
   for (const s of ORDER) {
     const lines = sections.get(s);
     if (!lines || !lines.some(Boolean)) continue;
