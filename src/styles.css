@@ -56,6 +56,7 @@
   --color-success-soft: var(--success-soft);
   --color-warning: var(--warning);
   --color-destructive-soft: var(--destructive-soft);
+  --color-warning-soft: var(--warning-soft);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -73,8 +74,9 @@
   --primary-deep: oklch(0.379 0.146 265.522);
   --success: oklch(0.45 0.13 150);
   --success-soft: oklch(0.95 0.05 150);
-  --warning: oklch(0.52 0.13 60);
+  --warning: oklch(0.6 0.14 75);
   --destructive-soft: oklch(0.95 0.03 25);
+  --warning-soft: oklch(0.96 0.06 90);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
