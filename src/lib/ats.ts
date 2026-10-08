@@ -82,7 +82,7 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
       if (nx) {
         const nn = norm(nx);
         if (nn.length >= 3 && !STOP.has(nn) && !STOP.has(nx.toLowerCase())) add(n + " " + nn, `${t} ${nx}`.toLowerCase(), `${t} ${nx}`, 0.6);
-      } else if (toks[i + 2] && ["de", "em"].includes(toks[i + 1]?.toLowerCase())) {
+      } else if (toks[i + 2] && ["de", "em"].includes((toks[i + 1] ?? "").toLowerCase())) {
         /* noop */
       }
       // "gestão de projetos" style trigram
