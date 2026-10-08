@@ -70,7 +70,7 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
   for (const line of job.split(/\r?\n/)) {
     const toks = tokens(line);
     for (let i = 0; i < toks.length; i++) {
-      const t = toks[i], n = norm(t);
+      const t = toks[i]!, n = norm(t);
       if (n.length < 2 || STOP.has(t.toLowerCase()) || STOP.has(n) || /^\d+$/.test(n)) continue;
       const isAcronym = /^[A-Z0-9#+.]{2,8}$/.test(t);
       const isProper = /^[A-Z][a-z]/.test(t) && i > 0;
@@ -86,8 +86,8 @@ function extractTerms(job: string): { term: string; category: Category; weight: 
         /* noop */
       }
       // "gestão de projetos" style trigram
-      if (toks[i + 1] && ["de", "em", "do", "da"].includes(toks[i + 1].toLowerCase()) && toks[i + 2]) {
-        const n3 = norm(toks[i + 2]);
+      if (toks[i + 1] && ["de", "em", "do", "da"].includes(toks[i + 1]!.toLowerCase()) && toks[i + 2]) {
+        const n3 = norm(toks[i + 2]!);
         if (n3.length >= 4 && !STOP.has(n3)) add(`${n} ${toks[i + 1]!.toLowerCase()} ${n3}`, `${t} ${toks[i + 1]} ${toks[i + 2]}`.toLowerCase(), `${t} ${toks[i + 1]} ${toks[i + 2]}`, 0.8);
       }
     }
