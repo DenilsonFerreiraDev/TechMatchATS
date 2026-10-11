@@ -70,10 +70,10 @@ Screenshots
 Página Inicial
 home.png.png
 
-Resultado da Análise
+Resultado da Análise ATS
 analises.png.png
 
-Palavras-chave
+Palavras-chave Encontradas e Faltantes
 keywords.png.png
 
 Currículo ATS Friendly
