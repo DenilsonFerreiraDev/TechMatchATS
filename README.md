@@ -69,6 +69,12 @@ Página Inicial
 home.png.png
 
 Resultado da Análise ATS
+
+Screenshots
+Página Inicial
+home.png.png
+
+Resultado da Análise ATS
 analises.png.png
 
 Palavras-chave Encontradas e Faltantes
