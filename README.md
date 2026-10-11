@@ -1,26 +1,96 @@
-# Pixel Perfect Replication
+TechMatch ATS
+Sobre o Projeto
+O TechMatch ATS é uma aplicação web desenvolvida para ajudar candidatos a otimizar seus currículos para sistemas ATS (Applicant Tracking System).
 
-Implement exactly the screenshot and nothing else
+A ferramenta compara uma descrição de vaga com um currículo, identifica compatibilidades, destaca palavras-chave relevantes e gera uma versão ATS Friendly do currículo, sem adicionar informações inexistentes.
 
-This project was built with [Lovable](https://lovable.dev).
+Problema Resolvido
+Muitos currículos são filtrados por sistemas ATS antes mesmo de serem analisados por recrutadores.
 
-**Live app**: https://comfy-pixel-replicator.lovable.app
+O TechMatch ATS permite:
 
-## Build with Lovable
+Comparar currículo e vaga
+Calcular compatibilidade
+Identificar palavras-chave encontradas
+Identificar palavras-chave ausentes
+Gerar recomendações
+Criar uma versão ATS Friendly do currículo
+Importante:
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c877f91c-eb62-40d4-88ea-1dfefe7e3f70).
+A ferramenta nunca inventa experiências, habilidades, certificações ou conhecimentos.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Tecnologias Utilizadas
+Lovable
+React
+TypeScript
+Tailwind CSS
+shadcn/ui
+Lucide React
+LocalStorage
+Funcionalidades
+Análise ATS
+ATS Score visual
+Compatibilidade por categoria
+Hard Skills
+Soft Skills
+Tecnologias
+Ferramentas
+Certificações
+Diagnóstico ATS
+Palavras-chave identificadas
+Correspondências encontradas
+Palavras faltantes
+Percentual de aderência
+Recomendações
+Currículo ATS Friendly
+Estrutura automática em:
 
-## Development
+Resumo Profissional
+Competências
+Experiência Profissional
+Formação Acadêmica
+Certificações
+Histórico
+Armazena localmente as análises anteriores.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Exportação
+Copiar texto
+Exportar PDF
+Fluxo de Funcionamento
+O usuário cola a descrição da vaga.
+O usuário cola seu currículo.
+O sistema identifica palavras-chave relevantes.
+Calcula o ATS Score.
+Exibe compatibilidade por categoria.
+Mostra palavras encontradas e faltantes.
+Gera recomendações.
+Cria uma versão ATS Friendly do currículo.
+Permite exportação em PDF.
+Screenshots
+Página Inicial
+home.png.png
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Resultado da Análise
+analises.png.png
+
+Palavras-chave
+keywords.png.png
+
+Currículo ATS Friendly
+otimizado.png.png
+
+Exportação PDF
+exportar.png.png
+
+Aplicação Publicada
+https://comfy-pixel-replicator.lovable.app
+
+Repositório
+https://github.com/DenilsonFerreiraDev/TechMatchATS
+
+Autor
+Antonio Denilson Ferreira Araujo
+
+Tecnólogo em Análise e Desenvolvimento de Sistemas.
+
+Projeto desenvolvido como atividade final do Bootcamp de Aplicações em IA da DIO.
