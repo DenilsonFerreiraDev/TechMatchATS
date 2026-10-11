@@ -1,22 +1,20 @@
 TechMatch ATS
 Sobre o Projeto
-O TechMatch ATS é uma aplicação web desenvolvida para ajudar candidatos a otimizar seus currículos para sistemas ATS (Applicant Tracking System).
+O TechMatch ATS é uma aplicação web para ajudar candidatos a otimizar seus currículos para sistemas ATS (Applicant Tracking System).
 
-A ferramenta compara uma descrição de vaga com um currículo, identifica compatibilidades, destaca palavras-chave relevantes e gera uma versão ATS Friendly do currículo, sem adicionar informações inexistentes.
+A ferramenta compara uma descrição de vaga com um currículo, identifica compatibilidades, destaca palavras-chave relevantes e gera uma versão ATS Friendly do currículo sem adicionar informações inexistentes.
 
 Problema Resolvido
 Muitos currículos são filtrados por sistemas ATS antes mesmo de serem analisados por recrutadores.
 
-O TechMatch ATS permite:
+Com o TechMatch ATS é possível:
 
 Comparar currículo e vaga
 Calcular compatibilidade
 Identificar palavras-chave encontradas
-Identificar palavras-chave ausentes
-Gerar recomendações
-Criar uma versão ATS Friendly do currículo
-Importante:
-
+Identificar palavras-chave faltantes
+Receber recomendações de melhoria
+Gerar uma versão ATS Friendly do currículo
 A ferramenta nunca inventa experiências, habilidades, certificações ou conhecimentos.
 
 Tecnologias Utilizadas
@@ -51,7 +49,7 @@ Experiência Profissional
 Formação Acadêmica
 Certificações
 Histórico
-Armazena localmente as análises anteriores.
+Armazena localmente as análises realizadas.
 
 Exportação
 Copiar texto
@@ -66,9 +64,6 @@ Mostra palavras encontradas e faltantes.
 Gera recomendações.
 Cria uma versão ATS Friendly do currículo.
 Permite exportação em PDF.
-Screenshots
-Screenshots
-
 Screenshots
 Página Inicial
 home.png.png
