@@ -68,6 +68,8 @@ Cria uma versão ATS Friendly do currículo.
 Permite exportação em PDF.
 Screenshots
 Screenshots
+
+Screenshots
 Página Inicial
 home.png.png
 
